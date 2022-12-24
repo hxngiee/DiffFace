@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Diffusion-based Face Swapping with Facial Guidance.">
+  <meta name="keywords" content="Face Swap, Diffusion">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiffFace: Diffusion-based Face Swapping with Facial Guidance</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+<!--  <link rel="icon" href="./static/images/favicon.svg">-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DiffFace: Diffusion-based Face Swapping with Facial Guidance</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://hxngiee.github.io">Kihong Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              Yunho Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://seokju-cho.github.io">Seokju Cho</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://j0seo.github.io">Junyoung Seo</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Jisu Nam</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Kychul Lee</a><sup>1</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://cvlab.korea.ac.kr/members">Seungryong Kim</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              KwangHee Lee</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>VIVE STUDIOS,</span>
+            <span class="author-block"><sup>2</sup>Korea University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/hxngiee/DiffFace"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.jpg"
+                 class="teaser-image"
+                 alt="teaser image."/>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">DiffFace</span> gradually produces images with source identity and target attributes such as gaze, structure and pose
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose a novel diffusion-based face swapping framework, called DiffFace, composed of training ID Conditional DDPM, sampling with facial guidance, and a target-preserving blending. In specific, in the training process, the ID Conditional DDPM is trained to generate face images with the desired identity. In the sampling process, we use the off-the-shelf facial expert models to make the model transfer source identity while preserving target attributes faithfully. During this process, to preserve the background of the target image, we additionally propose a target-preserving blending strategy. It helps our model to keep the attributes of the target face from noise while transferring the source facial identity. In addition, without any re-training, our model can flexibly apply additional facial guidance and adaptively control the ID-attributes trade-off to achieve the desired results.
+            To the best of our knowledge, this is the first approach that applies the diffusion model in face swapping task. Compared with previous GAN-based approaches, by taking advantage of the diffusion model for the face swapping task, DiffFace achieves better benefits such as training stability, high fidelity, and controllability. Extensive experiments show that our DiffFace is comparable or superior to the state-of-the-art methods on the standard face swapping benchmark.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">ID Conditional DDPM</h2>
+          <p>
+            We employ the structure of the conditional diffusion model, where source identity information can be injected.
+            At the same time, we propose
+            an identity loss for the diffusion model to preserve the facial
+            identity effectively
+          </p>
+          <img src="./static/images/training.jpg"
+               class="training-image"
+               alt="training image."/>
+        </div>
+      </div>
+      <!--/ Training ID Conditional DDPM. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Algorithm</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              The overall process for training ID Conditional DDPM. We verify the benefit of the ID Conditional DDPM in the paper
+            </p>
+            <img src="./static/images/trainingAlg.jpg"
+                 class="trainingAlg-image"
+                 alt="trainingAlg image."/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Sampling</h2>
+        <img src="./static/images/sampling.jpg"
+             class="training-image"
+             alt="training image."/>
+
+        <div class="content has-text-justified">
+          <p>
+            To control the facial attributes of generated images, we
+            propose facial guidance that is applied during the diffusion
+            process. One major advantage of using the diffusion model
+            is that once the model is trained, it can control the image
+            driven by the guidance during the sampling process. Thus
+            we can obtain desired images without any re-training of
+            the diffusion model. In order to utilize this advantage, we
+            give facial guidance using external models, such as identity
+            embedder, face parser, and gaze estimator during the sampling process. Note that we can use any offthe-shelf facial model, and they can be adaptively
+            selected according to the user’s purpose.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Target Preserving Blending </h2>
+        <img src="./static/images/sampling_progress.jpg"
+             class="sampling_progress"
+             alt="sampling_progress image."/>
+
+        <div class="content has-text-justified">
+          <p>
+            Target preserving
+            blending method that alters the mask intensity to better preserve structural attributes of target. Target preserving blending is to gradually increase the mask intensity from zero to
+            one, according to the time of the diffusion process T. By
+            adjusting the starting point where the intensity of the mask
+            becomes one, we can adaptively maintain the structure of the
+            target image
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Comparison Results</h2>
+        <img src="./static/images/exp_compare_result.jpg"
+             class="training-image"
+             alt="training image."/>
+
+        <div class="content has-text-justified">
+          <p>
+            Our DiffFace outperforms other models
+            in terms of changing identity-related attributes. For example,
+            in the first and fourth rows, we notice our result reflects more
+            vivid lips and eyes, while other results models tend to have
+            eyes and lip colors from target images. This shows that our
+            model more effectively transfers identity-related attributes
+            than other models.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{kim2023diffface,
+  author    = {K. Kim, Y. Kim, S. Cho, J. Seo, J. Nam, K. Lee, S. Kim, K. Lee},
+  title     = {DiffFace: Diffusion-based Face Swapping with Facial Guidance},
+  journal   = {Arxiv},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
