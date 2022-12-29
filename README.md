@@ -4,7 +4,7 @@
 
   **equal contribution*
 
-For more information, check out the paper on [Arxiv]() or [Project page](https://hxngiee.github.io/DiffFace)
+For more information, check out the paper on [Arxiv](https://arxiv.org/abs/2212.13344) or [Project page](https://hxngiee.github.io/DiffFace)
 
 
 
