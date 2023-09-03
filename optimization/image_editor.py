@@ -164,7 +164,6 @@ class ImageEditor:
 
         id_loss = torch.tensor(0)
 
-        # x_in하면 머리부분도 변할 가능성이 있음
         masked_input = x_in * self.mask
         # masked_input = x_in
 
