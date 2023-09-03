@@ -59,7 +59,7 @@ python main.py --output_path output/example
 ```
 
 ## License
-For academic and non-commercial use only.The whole project is under the CC-BY-NC 4.0 license.
+This licence allows for academic and non-commercial purpose only. The entire project is under the CC-BY-NC 4.0 license.
 
 ## Citation
 If you find DiffFace useful for your work please cite:
